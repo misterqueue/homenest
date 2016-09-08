@@ -63,3 +63,4 @@ npm-debug.log
 
 # FQ #
 .github
+*.VC.DB
