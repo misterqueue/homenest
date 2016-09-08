@@ -1,17 +1,36 @@
 import { Routes, RouterModule } from '@angular/router';
-import { Home } from './home';
-import { About } from './about';
-import { NoContent } from './no-content';
+import { DashboardComponent } from './dashboard.component';
+import { WeatherPageComponent } from './weatherpage.component';
+import { ForecastPageComponent } from './forecastpage.component';
+import { AboutComponent } from './about.component';
+import { NoContent } from './no-content/no-content';
 
-import { DataResolver } from './app.resolver';
-
-
-export const ROUTES: Routes = [
-  { path: '',      component: Home },
-  { path: 'home',  component: Home },
-  { path: 'about', component: About },
-  {
-    path: 'detail', loadChildren: () => System.import('./+detail')
-  },
-  { path: '**',    component: NoContent },
+const appRoutes: Routes = [
+	{
+		path: '',
+		redirectTo: '/dashboard',
+		pathMatch: 'full'
+	},
+	{
+		path: 'dashboard',
+		component: DashboardComponent
+	},
+	{
+		path: 'weather',
+		component: WeatherPageComponent
+	},
+	{
+		path: 'forecast',
+		component: ForecastPageComponent
+	},
+	{
+		path: 'about',
+		component: AboutComponent
+	},
+	{
+		path: '**',
+		component: NoContent
+	},
 ];
+
+export const routes = RouterModule.forRoot(appRoutes);
